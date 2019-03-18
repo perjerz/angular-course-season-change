@@ -8,21 +8,26 @@ import { Todo } from '../todo/todo';
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[];
+  newTodo: string;
+  filterType: string;
+  toggle: boolean;
+
   constructor() { }
 
   ngOnInit() {
-    this.todos = [
-      {
-        task: 'ทำการบ้าน',
-        isDone: false,
-      },
-      {
-        task: 'ไปอ่านหนังสือ',
-        isDone: false,
-      }
-    ];
+    this.todos = [];
+    this.toggle = true;
+    this.filterType = 'all';
   }
   removeTodoA(index: number) {
     this.todos.splice(index, 1);
+    this.toggle = !this.toggle;
+  }
+  addTodo() {
+    this.todos.push({
+      isDone: false,
+      task: this.newTodo
+    });
+    this.newTodo = '';
   }
 }

@@ -1,15 +1,19 @@
+import { FilterTodoPipe } from './../filter-todo.pipe';
 import { TodoListComponent } from './../todo-list/todo-list.component';
 import { TodoComponent } from './todo.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     TodoComponent,
-    TodoListComponent
+    TodoListComponent,
+    FilterTodoPipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     TodoListComponent

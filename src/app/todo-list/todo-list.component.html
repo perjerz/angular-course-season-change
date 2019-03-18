@@ -1,1 +1,17 @@
-<app-todo *ngFor="let t of todos; index as i" [todo]="t" [index]="i" (removeTodo)="removeTodoA($event)"></app-todo>
+<section class="todoapp">
+  <header class="header">
+    <h1>Todos</h1>
+    <input class="new-todo" placeholder="What needs to be done?" autofocus="" type="text" [(ngModel)]="newTodo" (keydown.enter)="addTodo()" />
+    <input style="margin-left: 10px;" type="radio" name="filter" value="all" [(ngModel)]="filterType"><strong>All</strong>
+    <input style="margin-left: 10px;" type="radio" name="filter" value="done" [(ngModel)]="filterType"><strong>Done</strong>
+    <input style="margin-left: 10px;" type="radio" name="filter" value="undone" [(ngModel)]="filterType"><strong>Undone</strong>
+  </header>
+  <section class="main" *ngIf="todos | filterTodo:filterType:toggle as filteredTodos">
+    <ul class="todo-list">
+      <app-todo *ngFor="let t of filteredTodos" [todo]="t" [index]="t.index" (removeTodo)="removeTodoA($event)"></app-todo>
+    </ul>
+    <footer class="footer">
+      <span class="todo-count"><strong>{{filteredTodos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>
+    </footer>
+  </section>
+
