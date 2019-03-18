@@ -8,10 +8,10 @@
   </header>
   <section class="main" *ngIf="todos | filterTodo:filterType:toggle as filteredTodos">
     <ul class="todo-list">
-      <app-todo *ngFor="let t of filteredTodos" [todo]="t" [index]="t.index" (removeTodo)="removeTodoA($event)"></app-todo>
+      <app-todo-item *ngFor="let t of filteredTodos" [todo]="t" [index]="t.index" (removeTodo)="removeTodoA($event)"></app-todo-item>
     </ul>
     <footer class="footer">
-      <span class="todo-count"><strong>{{filteredTodos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>
+      <span class="todo-count"><strong>{{filteredTodos.length}}</strong> {{filteredTodos.length == 1 ? 'item' : 'items'}} left</span>
     </footer>
   </section>
 

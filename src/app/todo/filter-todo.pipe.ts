@@ -1,4 +1,4 @@
-import { Todo } from './todo/todo';
+import { Todo } from './todo';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

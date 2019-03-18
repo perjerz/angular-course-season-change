@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Todo } from '../todo/todo';
+import { Todo } from '../todo';
 
 @Component({
   selector: 'app-todo-list',
@@ -29,5 +29,6 @@ export class TodoListComponent implements OnInit {
       task: this.newTodo
     });
     this.newTodo = '';
+    this.toggle = !this.toggle;
   }
 }
