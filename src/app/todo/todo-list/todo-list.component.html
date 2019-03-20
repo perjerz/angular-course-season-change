@@ -3,13 +3,17 @@
     <h1>Todos</h1>
     <input class="new-todo" placeholder="What needs to be done?" autofocus="" type="text" [(ngModel)]="newTodo"
       (keydown.enter)="addTodo()" />
-    <input style="margin-left: 10px;" type="radio" name="filter" value="all" [(ngModel)]="filterType"><strong>All</strong>
-    <input style="margin-left: 10px;" type="radio" name="filter" value="done" [(ngModel)]="filterType"><strong>Done</strong>
-    <input style="margin-left: 10px;" type="radio" name="filter" value="undone" [(ngModel)]="filterType"><strong>Undone</strong>
+    <input style="margin-left: 10px;" type="radio" name="filter" value="all"
+      [(ngModel)]="filterType"><strong>All</strong>
+    <input style="margin-left: 10px;" type="radio" name="filter" value="done"
+      [(ngModel)]="filterType"><strong>Done</strong>
+    <input style="margin-left: 10px;" type="radio" name="filter" value="undone"
+      [(ngModel)]="filterType"><strong>Undone</strong>
   </header>
   <section class="main" *ngIf="todos | filterTodo:filterType as filteredTodos">
     <ul class="todo-list">
-      <app-todo-item *ngFor="let t of filteredTodos" [todo]="t" [index]="t.index" (removeTodo)="removeTodoA($event)"></app-todo-item>
+      <app-todo-item *ngFor="let t of filteredTodos" [task]="t.task" [isDone]="t.isDone" [index]="t.index"
+        (removeTodo)="removeTodoA($event)" (toggleTodo)="toggleTodo($event)"></app-todo-item>
     </ul>
     <footer class="footer">
       <span class="todo-count"><strong>{{filteredTodos.length}}</strong> {{filteredTodos.length == 1 ? 'item' :

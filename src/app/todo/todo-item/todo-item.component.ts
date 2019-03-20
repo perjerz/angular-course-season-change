@@ -7,15 +7,19 @@ import { Todo } from '../todo';
   styleUrls: ['./todo-item.component.scss']
 })
 export class TodoComponent implements OnInit {
-  @Input() todo: Todo;
+  @Input() task: string;
   @Input() index: number;
+  @Input() isDone: boolean;
+  @Output() toggleTodo = new EventEmitter();
   @Output() removeTodo = new EventEmitter<number>();
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   deleteTodo() {
     this.removeTodo.emit(this.index);
+  }
+  checkTodo() {
+    this.toggleTodo.emit(this.index);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo';
 
 @Component({
@@ -35,5 +35,16 @@ export class TodoListComponent implements OnInit {
     };
     this.todos = [...this.todos, newTodo];
     this.newTodo = '';
+  }
+  toggleTodo(index: number) {
+    const toggledTodo: Todo = {
+      ...this.todos[index],
+      isDone: !this.todos[index].isDone
+    };
+    this.todos = [
+      ...this.todos.slice(0, index),
+      toggledTodo,
+      ...this.todos.slice(index + 1, this.todos.length)
+    ];
   }
 }

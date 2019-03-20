@@ -6,17 +6,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    TodoComponent,
-    TodoListComponent,
-    FilterTodoPipe
-  ],
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
-  exports: [
-    TodoListComponent
-  ]
+  declarations: [TodoComponent, TodoListComponent, FilterTodoPipe],
+  imports: [CommonModule, FormsModule],
+  exports: [TodoListComponent]
 })
-export class TodoModule { }
+export class TodoModule {}

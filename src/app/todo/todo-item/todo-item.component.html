@@ -1,7 +1,7 @@
-<li [class.completed]="todo.isDone">
-    <div class="view">
-      <input class="toggle" type="checkbox" [(ngModel)]="todo.isDone" />
-      <label>{{todo.task}}</label>
-      <button class="destroy" (click)="deleteTodo()"></button>
-    </div>
-  </li>
+<li [class.completed]="isDone">
+  <div class="view">
+    <input class="toggle" type="checkbox" [ngModel]="isDone" (ngModelChange)="checkTodo()" />
+    <label>{{task}}</label>
+    <button class="destroy" (click)="deleteTodo()"></button>
+  </div>
+</li>
