@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Todo } from '../todo';
+import { Component, OnInit, Input } from "@angular/core";
+import { Todo } from "../shared/todo";
 
 @Component({
-  selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+  selector: "app-todo-list",
+  templateUrl: "./todo-list.component.html",
+  styleUrls: ["./todo-list.component.scss"],
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[];
@@ -12,12 +12,12 @@ export class TodoListComponent implements OnInit {
   filterType: string;
   toggle: boolean;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.todos = [];
     this.toggle = true;
-    this.filterType = 'all';
+    this.filterType = "all";
   }
   removeTodoA(index: number) {
     this.todos.splice(index, 1);
@@ -26,9 +26,9 @@ export class TodoListComponent implements OnInit {
   addTodo() {
     this.todos.push({
       isDone: false,
-      task: this.newTodo
+      task: this.newTodo,
     });
-    this.newTodo = '';
+    this.newTodo = "";
     this.toggle = !this.toggle;
   }
 }
