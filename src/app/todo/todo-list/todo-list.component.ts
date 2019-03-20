@@ -10,25 +10,30 @@ export class TodoListComponent implements OnInit {
   todos: Todo[];
   newTodo: string;
   filterType: string;
-  toggle: boolean;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.todos = [];
-    this.toggle = true;
     this.filterType = 'all';
   }
   removeTodoA(index: number) {
-    this.todos.splice(index, 1);
-    this.toggle = !this.toggle;
+    console.log(
+      index,
+      this.todos.slice(0, index),
+      this.todos.slice(index + 1, this.todos.length)
+    );
+    this.todos = [
+      ...this.todos.slice(0, index),
+      ...this.todos.slice(index + 1, this.todos.length)
+    ];
   }
   addTodo() {
-    this.todos.push({
+    const newTodo = {
       isDone: false,
       task: this.newTodo
-    });
+    };
+    this.todos = [...this.todos, newTodo];
     this.newTodo = '';
-    this.toggle = !this.toggle;
   }
 }
